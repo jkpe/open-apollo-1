@@ -513,29 +513,21 @@ extension AudioPlayer {
         }
         
         MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
-        if #available(iOSApplicationExtension 13.0, *) {
-            if #available(watchOSApplicationExtension 6.0, *) {
-                MPNowPlayingInfoCenter.default().playbackState = {
-                    switch playbackState {
-                    case .loading,
-                         .buffering:
-                        return .playing
-                    case .playing:
-                        return .playing
-                    case .paused:
-                        return .paused
-                    case .stopped:
-                        return .stopped
-                    case .interrupted:
-                        return .interrupted
-                    }
-                }()
-            } else {
-                // Fallback on earlier versions
+        MPNowPlayingInfoCenter.default().playbackState = {
+            switch playbackState {
+            case .loading,
+                 .buffering:
+                return .playing
+            case .playing:
+                return .playing
+            case .paused:
+                return .paused
+            case .stopped:
+                return .stopped
+            case .interrupted:
+                return .interrupted
             }
-        } else {
-            // Fallback on earlier versions
-        }
+        }()
     }
     
     private func playerElapsedPlaybackTime() -> Double? {

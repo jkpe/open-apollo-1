@@ -9,7 +9,6 @@
 import UIKit
 import SpotifyServices
 
-@available(iOS 13.0, *)
 class HelloViewController: StepViewController {
 
     private let currentUser: User

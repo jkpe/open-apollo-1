@@ -10,14 +10,9 @@ import UIKit
 import AuthenticationServices
 import SafariServices
 
-@available(iOS 13.0, *)
-class WelcomeViewController: StepViewController, ASWebAuthenticationPresentationContextProviding {
+class WelcomeViewController: StepViewController {
     
     private var authenticationSession: ASWebAuthenticationSession?
-    
-    func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
-        return self.view.window ?? ASPresentationAnchor()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +29,6 @@ class WelcomeViewController: StepViewController, ASWebAuthenticationPresentation
 
 // MARK: - Action
 
-@available(iOS 13.0, *)
 extension WelcomeViewController {
     
     @objc
@@ -49,7 +43,6 @@ extension WelcomeViewController {
 
 // MARK: - Setup
 
-@available(iOS 13.0, *)
 extension WelcomeViewController {
     
     private func setupView() {
@@ -91,7 +84,6 @@ extension WelcomeViewController {
 
 // MARK: - Auth
 
-@available(iOS 13.0, *)
 extension WelcomeViewController {
     
     @objc
@@ -110,10 +102,6 @@ extension WelcomeViewController {
                         switch error.code {
                         case .canceledLogin:
                             return
-                        case .presentationContextNotProvided:
-                            return
-                        case .presentationContextInvalid:
-                            return
                         }
                     } else {
                         self?.handleAuthorizeFailure(error)
@@ -123,7 +111,6 @@ extension WelcomeViewController {
         )
         authenticationSession = session
         
-        session.presentationContextProvider = self
         session.start()
     }
     

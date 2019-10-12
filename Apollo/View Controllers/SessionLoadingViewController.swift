@@ -9,7 +9,6 @@
 import UIKit
 import SpotifyServices
 
-@available(iOS 13.0, *)
 class SessionLoadingViewController: BaseViewController {
     
     private lazy var activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
@@ -35,7 +34,6 @@ class SessionLoadingViewController: BaseViewController {
 
 // MARK: - Request Token
 
-@available(iOS 13.0, *)
 extension SessionLoadingViewController {
     
     private func loadUserInfo() {
@@ -93,7 +91,6 @@ extension SessionLoadingViewController {
 
 // MARK: - Setup
 
-@available(iOS 13.0, *)
 extension SessionLoadingViewController {
     
     private func setupView() {
