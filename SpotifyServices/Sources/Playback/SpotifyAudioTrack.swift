@@ -6,6 +6,7 @@
 //  Copyright © 2018 Oltica. All rights reserved.
 //
 
+import UIKit
 import Foundation
 import AVFoundation
 import AudioKit
